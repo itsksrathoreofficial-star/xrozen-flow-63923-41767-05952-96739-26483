@@ -415,8 +415,10 @@ export type Database = {
       }
       video_versions: {
         Row: {
+          approval_status: Database["public"]["Enums"]["approval_status"] | null
           correction_notes: string | null
           created_at: string
+          final_link_requested: boolean | null
           final_url: string | null
           id: string
           is_approved: boolean
@@ -427,8 +429,12 @@ export type Database = {
           version_number: number
         }
         Insert: {
+          approval_status?:
+            | Database["public"]["Enums"]["approval_status"]
+            | null
           correction_notes?: string | null
           created_at?: string
+          final_link_requested?: boolean | null
           final_url?: string | null
           id?: string
           is_approved?: boolean
@@ -439,8 +445,12 @@ export type Database = {
           version_number: number
         }
         Update: {
+          approval_status?:
+            | Database["public"]["Enums"]["approval_status"]
+            | null
           correction_notes?: string | null
           created_at?: string
+          final_link_requested?: boolean | null
           final_url?: string | null
           id?: string
           is_approved?: boolean
@@ -479,6 +489,11 @@ export type Database = {
     }
     Enums: {
       app_role: "editor" | "client" | "agency"
+      approval_status:
+        | "pending"
+        | "approved"
+        | "rejected"
+        | "corrections_needed"
       employment_type: "fulltime" | "freelance"
       payment_status: "pending" | "paid" | "overdue"
       payment_type: "freelance" | "fulltime"
@@ -613,6 +628,12 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["editor", "client", "agency"],
+      approval_status: [
+        "pending",
+        "approved",
+        "rejected",
+        "corrections_needed",
+      ],
       employment_type: ["fulltime", "freelance"],
       payment_status: ["pending", "paid", "overdue"],
       payment_type: ["freelance", "fulltime"],

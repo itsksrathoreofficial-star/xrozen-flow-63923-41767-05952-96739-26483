@@ -10,7 +10,6 @@ import { db } from "@/lib/database-config";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { VersionManagement } from "@/components/project-details/VersionManagement";
-import { FeedbackSection } from "@/components/project-details/FeedbackSection";
 
 const ProjectDetails = () => {
   const navigate = useNavigate();
@@ -312,13 +311,6 @@ const ProjectDetails = () => {
               projectId={projectId!}
               versions={versions}
               onVersionsUpdate={loadProjectDetails}
-              userRole={userRole}
-            />
-
-            {/* Feedback Section */}
-            <FeedbackSection
-              projectId={projectId!}
-              versions={versions}
               userRole={userRole}
             />
           </main>
